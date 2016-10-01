@@ -38,7 +38,12 @@ public class Robot extends IterativeRobot {
     	double leftDriveSpeed = leftDriveStick.getY();
     	double rightDriveSpeed = rightDriveStick.getY();
     	// Set Drivetrain motors
-    	driveTrain.tankDrive(leftDriveSpeed, rightDriveSpeed);
+    	if(leftDriveStick.getTrigger() || rightDriveStick.getTrigger()){
+    		driveTrain.tankDrive(leftDriveSpeed, rightDriveSpeed);
+    	}
+    	else{
+    		driveTrain.tankDrive(leftDriveSpeed / 2, rightDriveSpeed / 2);
+    	}
     }
     
     /**
