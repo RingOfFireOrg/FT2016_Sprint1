@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	Joystick rightDriveStick;
 	Joystick commandStick;
 	
+	
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -43,8 +44,8 @@ public class Robot extends IterativeRobot {
     	if(commandStick.getTrigger()){
     		// this causes the drive speed to be sent to both wheels as the same
     		// to make going forward and backwards easier.
-    		leftDriveSpeed = commandStick.getY() * -1;
-    		driveTrain.arcadeDrive(leftDriveSpeed, 0.0);
+    		double driveSpeed = commandStick.getY() * -1;
+    		driveTrain.arcadeDrive(driveSpeed, 0.0);
     	}
     	else if(leftDriveStick.getTrigger() || rightDriveStick.getTrigger()){
     		driveTrain.tankDrive(leftDriveSpeed, rightDriveSpeed);
