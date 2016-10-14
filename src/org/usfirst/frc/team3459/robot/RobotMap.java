@@ -7,8 +7,10 @@ package org.usfirst.frc.team3459.robot;
  * floating around.
  */
 public class RobotMap {
-    public static int leftMotor = 0;
-    public static int rightMotor = 1;
+	// These are backwards of normal robot because the "back" is what all teams are
+	// using as the "front"
+    public static int leftMotor = 1;
+    public static int rightMotor = 0;
  // for drive station ports
     public static int driverStationDriveStickLeft = 0;
     public static int driverStationDriveStickRight = 1;
