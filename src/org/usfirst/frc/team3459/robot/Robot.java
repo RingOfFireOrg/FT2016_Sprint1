@@ -44,7 +44,7 @@ public class Robot extends IterativeRobot {
     		// this causes the drive speed to be sent to both wheels as the same
     		// to make going forward and backwards easier.
     		leftDriveSpeed = commandStick.getY() * -1;
-    		driveTrain.tankDrive(leftDriveSpeed, leftDriveSpeed);
+    		driveTrain.arcadeDrive(leftDriveSpeed, 0.0);
     	}
     	else if(leftDriveStick.getTrigger() || rightDriveStick.getTrigger()){
     		driveTrain.tankDrive(leftDriveSpeed, rightDriveSpeed);
