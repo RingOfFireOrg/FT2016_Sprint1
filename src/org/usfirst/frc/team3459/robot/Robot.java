@@ -14,7 +14,7 @@ import org.usfirst.frc.team3459.robot.RobotMap;
 public class Robot extends IterativeRobot {
 	
 	/*
-	 * Member variables go here
+	 * Member variables go here 
 	 */
 	RobotDrive driveTrain;
 	Joystick leftDriveStick;
