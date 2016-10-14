@@ -19,6 +19,7 @@ public class Robot extends IterativeRobot {
 	RobotDrive driveTrain;
 	Joystick leftDriveStick;
 	Joystick rightDriveStick;
+	Joystick commandStick;
 	
     /**
      * This function is run when the robot is first started up and should be
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
         driveTrain = new RobotDrive(RobotMap.leftMotor, RobotMap.rightMotor);
         leftDriveStick = new Joystick(RobotMap.driverStationDriveStickLeft);
         rightDriveStick = new Joystick(RobotMap.driverStationDriveStickRight);
+        commandStick = new Joystick(RobotMap.driverStationCommandStick);
     }
     
     /**
@@ -38,7 +40,13 @@ public class Robot extends IterativeRobot {
     	double leftDriveSpeed = leftDriveStick.getY() * -1;
     	double rightDriveSpeed = rightDriveStick.getY() * -1;
     	// Set Drivetrain motors
-    	if(leftDriveStick.getTrigger() || rightDriveStick.getTrigger()){
+    	if(commandStick.getTrigger()){
+    		// this causes the drive speed to be sent to both wheels as the same
+    		// to make going forward and backwards easier.
+    		leftDriveSpeed = commandStick.getY() * -1;
+    		driveTrain.tankDrive(leftDriveSpeed, leftDriveSpeed);
+    	}
+    	else if(leftDriveStick.getTrigger() || rightDriveStick.getTrigger()){
     		driveTrain.tankDrive(leftDriveSpeed, rightDriveSpeed);
     	}
     	else{

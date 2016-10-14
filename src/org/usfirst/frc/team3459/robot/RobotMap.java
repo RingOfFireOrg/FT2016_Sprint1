@@ -14,4 +14,5 @@ public class RobotMap {
  // for drive station ports
     public static int driverStationDriveStickLeft = 0;
     public static int driverStationDriveStickRight = 1;
+    public static int driverStationCommandStick = 2;
 }
