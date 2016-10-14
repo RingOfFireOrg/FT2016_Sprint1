@@ -34,9 +34,9 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control (approx 20ms)
      */
     public void teleopPeriodic() {
-        // Read joysticks
-    	double leftDriveSpeed = leftDriveStick.getY();
-    	double rightDriveSpeed = rightDriveStick.getY();
+        // Read joysticks - The -1 is because we have the robot facing backwards
+    	double leftDriveSpeed = leftDriveStick.getY() * -1;
+    	double rightDriveSpeed = rightDriveStick.getY() * -1;
     	// Set Drivetrain motors
     	if(leftDriveStick.getTrigger() || rightDriveStick.getTrigger()){
     		driveTrain.tankDrive(leftDriveSpeed, rightDriveSpeed);
