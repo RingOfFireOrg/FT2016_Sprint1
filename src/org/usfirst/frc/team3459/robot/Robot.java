@@ -2,11 +2,11 @@
 package org.usfirst.frc.team3459.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team3459.robot.RobotMap;
+import org.usfirst.frc.team3459.robot.PT_RobotDrive;
 
 /**
  * Don't change the name of this or it won't work. (The manifest looks for "Robot")
@@ -16,7 +16,7 @@ public class Robot extends IterativeRobot {
 	/*
 	 * Member variables go here 
 	 */
-	RobotDrive driveTrain;
+	PT_RobotDrive driveTrain;
 	Joystick leftDriveStick;
 	Joystick rightDriveStick;
 	Joystick commandStick;
@@ -27,7 +27,8 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        driveTrain = new RobotDrive(RobotMap.leftMotor, RobotMap.rightMotor);
+        driveTrain = new PT_RobotDrive(RobotMap.leftMotor, RobotMap.rightMotor);
+        driveTrain.setBackwards(true);
         leftDriveStick = new Joystick(RobotMap.driverStationDriveStickLeft);
         rightDriveStick = new Joystick(RobotMap.driverStationDriveStickRight);
         commandStick = new Joystick(RobotMap.driverStationCommandStick);
@@ -37,14 +38,13 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control (approx 20ms)
      */
     public void teleopPeriodic() {
-        // Read joysticks - The -1 is because we have the robot facing backwards
-    	double leftDriveSpeed = leftDriveStick.getY() * -1;
-    	double rightDriveSpeed = rightDriveStick.getY() * -1;
+    	double leftDriveSpeed = leftDriveStick.getY();
+    	double rightDriveSpeed = rightDriveStick.getY();
     	// Set Drivetrain motors
     	if(commandStick.getTrigger()){
     		// this causes the drive speed to be sent to both wheels as the same
     		// to make going forward and backwards easier.
-    		double driveSpeed = commandStick.getY() * -1;
+    		double driveSpeed = commandStick.getY();
     		// so we don't destroy the field AGAIN by making it less sensitive in the middle
     		driveSpeed = driveSpeed / 2;
     		

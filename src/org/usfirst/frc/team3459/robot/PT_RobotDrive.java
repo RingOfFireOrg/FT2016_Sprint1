@@ -16,7 +16,7 @@ public class PT_RobotDrive extends RobotDrive {
 		}
 	}
 	
-	public void SetBackwards(boolean backwards){
+	public void setBackwards(boolean backwards){
 		m_backwards = backwards;
 	}
 	
